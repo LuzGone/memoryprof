@@ -21,7 +21,6 @@
         android:background="@color/white"
         >
         <ImageView>
-
         </ImageView>
     </GridLayout>
     <LinearLayout
