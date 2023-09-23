@@ -4,14 +4,14 @@ val TENTATIVAS = 10;
 
 class Jogo {
     private var professores  = arrayOf(
-        "Valeria","Valeria",
-        "Fausto","Fausto",
-        "Alexandre","Alexandre",
-        "Gustavo","Gustavo",
-        "Maxwell","Maxwell",
-        "Alex","Alex",
-        "Fred","Fred",
-        "Damires","Damires");
+        R.drawable.alex,R.drawable.alex,
+        R.drawable.alexandre,R.drawable.alexandre,
+        R.drawable.damires,R.drawable.damires,
+        R.drawable.fausto,R.drawable.fausto,
+        R.drawable.fred,R.drawable.fred,
+        R.drawable.gustavo,R.drawable.gustavo,
+        R.drawable.maxwell,R.drawable.maxwell,
+        R.drawable.valeria,R.drawable.valeria);
     private var tentativas = TENTATIVAS;
     private var pontos = 0;
     private var status = "NOVO JOGO";
@@ -21,7 +21,7 @@ class Jogo {
         this.status = "JOGANDO";
     }
 
-    fun jogar (palpite1:Int,palpite2:Int): Boolean{
+    fun jogada (palpite1:Int,palpite2:Int): Boolean{
         if (this.tentativas<0){
             return false
         }
@@ -45,6 +45,10 @@ class Jogo {
         this.professores.shuffle();
         this.pontos = 0;
         this.status = "JOGANDO";
+    }
+
+    fun getProfessores():Array<Int>{
+        return this.professores.clone();
     }
 
 }
