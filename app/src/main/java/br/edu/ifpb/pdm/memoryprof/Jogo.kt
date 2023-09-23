@@ -25,7 +25,7 @@ class Jogo {
         if (this.tentativas<0){
             return false
         }
-        if(professores[palpite1] == professores[palpite2]){
+        if(palpite1 == palpite2){
             this.pontos+=10;
             if (this.pontos == 80){
                 this.status = "VENCEU";
