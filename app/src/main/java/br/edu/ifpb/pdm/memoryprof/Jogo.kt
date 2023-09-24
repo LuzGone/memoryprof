@@ -1,5 +1,7 @@
 package br.edu.ifpb.pdm.memoryprof
 
+import android.widget.ImageView
+
 val TENTATIVAS = 10;
 
 class Jogo {
@@ -21,23 +23,25 @@ class Jogo {
         this.status = "JOGANDO";
     }
 
-    fun jogada (palpite1:Int,palpite2:Int): Boolean{
-        if (this.tentativas<0){
-            return false
-        }
-        if(palpite1 == palpite2){
-            this.pontos+=10;
-            if (this.pontos == 80){
-                this.status = "VENCEU";
+    fun jogada (palpites:MutableList<ImageView>): Boolean{
+        val palpite1 = palpites[0].tag as Int
+        val palpite2 = palpites[1].tag as Int
+        if (this.status == "JOGANDO"){
+            if(palpite1 == palpite2){
+                this.pontos+=1000;
+                if (this.pontos == 8000){
+                    this.status = "VENCEU";
+                }
+                return true
+            }else{
+                this.tentativas-=1;
+                if(this.tentativas<=0){
+                    this.status = "PERDEU";
+                }
+                return false
             }
-            return true
-        }else{
-            this.tentativas-=1;
-            if(this.tentativas<=0){
-                this.status = "PERDEU";
-            }
-            return false
         }
+        return false
     }
 
     fun reiniciar(){
@@ -49,6 +53,18 @@ class Jogo {
 
     fun getProfessores():Array<Int>{
         return this.professores.clone();
+    }
+
+    fun getPontuacao():Int{
+        return this.pontos
+    }
+
+    fun getTentativas():Int{
+        return this.tentativas
+    }
+
+    fun getStatus():String{
+        return this.status
     }
 
 }
